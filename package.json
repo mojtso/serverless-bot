@@ -1,0 +1,14 @@
+{
+    "name": "serverless-example-bot",
+    "version": "0.1.0",
+    "description": "A Facebook messenger bot using the Serverless framework",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "MIT",
+    "dependencies": {
+        "fetch": "^1.1.0",
+        "request": "^2.88.0"
+    }
+}
