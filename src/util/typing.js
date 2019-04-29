@@ -1,6 +1,4 @@
-const { apiCall } = require('./api')
-
-
+const api = require('./api')
 /*
  * Turn typing indicator on
  *
@@ -17,7 +15,7 @@ const sendTypingOn = (psid) => {
         sender_action: 'typing_on',
     };
     
-    apiCall('/message', payload, (response) => {
+    api('/message', payload, (response) => {
         console.log(response);
     })
 };
@@ -32,9 +30,7 @@ const sendTypingOff = (psid) => {
         },
     };
     
-    apiCall('/message', payload, (response) => {
+    api('/message', payload, (response) => {
         console.log(response);
     })
 };
-
-export { sendTypingOn, sendTypingOff };
