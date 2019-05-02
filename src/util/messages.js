@@ -10,13 +10,14 @@ const initConversations = (psid) => {
             id: psid,
         },
         message: {
-            text: "Hello World!",
+            text: "Hi there...",
         },
     }
 
+    setTimeout(()=> markSeen(psid), 100)
     sendTypingOn(psid)
-    setTimeout(()=> apiCall('/messages', payload), 500)
-    setTimeout(()=> markSeen(psid), 800)
+    // setTimeout(()=> apiCall('/messages', payload), 100)
+    setTimeout(() => sendQuickReply(psid, "select from the list..", "any", "istheralready", 500))
 
 }
 
@@ -30,14 +31,27 @@ const sendQuickReply = (psid, text, title, postback_payload) => {
 
     payload.message = {
         text: text,
-        quick_replies: [{
-            content_type: 'text',
-            title: title,
-            payload: postback_payload
-        }]    
+        quick_replies: [
+            {
+                "content_type":"text",
+                "title":"Movies",
+                "payload": 0
+            },
+            {
+                "content_type":"text",
+                "title":"News",
+                "payload": 1
+            },
+            {
+                "content_type":"text",
+                "title":"Todays weather",
+                "payload": 2
+            }
+
+        ]    
     }
 
-    api.call('/messages', payload)
+    apiCall('/messages', payload)
 }
 
 
