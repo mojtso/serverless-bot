@@ -28,16 +28,22 @@ module.exports.bot = async (event, context, callback) => {
             const messages = webhook_events.messaging
             
             messages.forEach(element => {
-                const psid = element.psid
+                const psid = element.sender.id
                 const message = element.message
                 const delivery = element.delivery
 
                 // get type of message to reply for.
-                if(message && message.postback) {
-                    console.log('initConversations')
-                    initConversations();
+                if(message && !message.is_echo) {
+                    console.log('call initConversations')
+                    initConversations(psid)
                 } 
             })
+            var response = {
+                'body': 'ok',
+                'statusCode': 200 
+            };
+            
+            callback(null, response);
         }
     }
 };
