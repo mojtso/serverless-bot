@@ -34,7 +34,6 @@ module.exports.bot = async (event, context, callback) => {
 
                 // get type of message to reply for.
                 if(message && !message.is_echo) {
-                    console.log('call initConversations')
                     initConversations(psid)
                 } 
             })

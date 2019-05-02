@@ -1,9 +1,7 @@
-// const fetchUrl = require('fetch').fetchUrl
 const request = require('request')
-const https = require('https')
 const constants = require('../constants')
 
-const apiCall = (path, payload, callback) => {
+const apiCall = (path, payload, next) => {
     console.log('inside apiCall')
     if(!path) {
         console.error('No endpoint specified on Messenger send.')
@@ -27,7 +25,7 @@ const apiCall = (path, payload, callback) => {
             return
         }
     });
-
+    
 };
 
 module.exports = apiCall
