@@ -1,7 +1,10 @@
 {
-    "quickMessages": [
+    "initMessage": [
         {
-            "payload": "Hi, How are you?"
+            "message": "Hi, {first name} 🙋🏽‍ welcome to in Sync 💓"
+        },
+        {
+            "message": "Welcome back"
         }
     ]
 }

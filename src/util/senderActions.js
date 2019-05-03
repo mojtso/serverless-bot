@@ -1,4 +1,4 @@
-const api = require('./api')
+const messageApiCall = require('./api').MessageApiCall
 /*
  * Turn typing indicator on
  *
@@ -6,7 +6,7 @@ const api = require('./api')
 
 const sendTypingOn = (psid) => {
 
-    if(!psid) { console.log('no psid from args'); return; };
+    if(!psid) { console.log('no psid from args'); return; }
 
     let payload = {
         recipient: {
@@ -15,12 +15,12 @@ const sendTypingOn = (psid) => {
         sender_action: 'typing_on',
     };
     
-    api('/message', payload)
+    messageApiCall('/message', payload)
 };
 
 const sendTypingOff = (psid) => {
 
-    if(!psid) { console.log('no psid from args'); return; };
+    if(!psid) { console.log('no psid from args'); return; }
 
     let payload = {
         recipient: {
@@ -29,12 +29,12 @@ const sendTypingOff = (psid) => {
         sender_action: 'typing_off',
     };
     
-    api('/message', payload)
+    messageApiCall('/message', payload)
 };
 
 const markSeen = (psid) => {
 
-    if(!psid) { console.log('no psid from args'); return; };
+    if(!psid) { console.log('no psid from args'); return; }
 
     let payload = {
         recipient: {
@@ -43,7 +43,7 @@ const markSeen = (psid) => {
         sender_action: 'mark_seen',
     };
     
-    api('/message', payload)
+    messageApiCall('/message', payload)
 };
 
 

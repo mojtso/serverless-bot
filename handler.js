@@ -1,5 +1,6 @@
 const constants = require('./src/constants')
 const initConversations = require('./src/util/messages').initConversations
+const welcomeBackConversation = require('./src/util/messages').welcomeBack
 
 
 module.exports.bot = async (event, context, callback) => {
@@ -30,11 +31,24 @@ module.exports.bot = async (event, context, callback) => {
             messages.forEach(element => {
                 const psid = element.sender.id
                 const message = element.message
+                const postback = element.postback.payload
                 const delivery = element.delivery
-
+                
                 // get type of message to reply for.
-                if(message && !message.is_echo) {
-                    initConversations(psid)
+                console.log(postback)
+                if(postback) {
+                    switch(postback) {
+                        case 'start':
+                            console.log('postback start')
+                            initConversations(psid)
+                            break
+                        default:
+                            //do not have to greet again
+                            break
+                    }
+                }
+                else if(message && !message.is_echo) {
+                    welcomeBackConversation(psid)
                 } 
             })
             var response = {
